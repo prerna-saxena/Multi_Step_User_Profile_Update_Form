@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<style>
+body {
+  font-family: "Sofia", sans-serif;
+  text-align: center;
+}
+</style>
+</head>
+
+
+<body>
+
+<h1>Multi - Step  User Profile Update Form</h1>
+
+</body>
+
+  </body>
+  <body>
+
+    
+    <form action="/action_page.php">
+      <label for="email">UserName:</label>
+      <input type="email" id="email" name="email"><br><br>
+      <label for="pwd">Password:</label>
+      <input type="password" id="pwd" name="pwd" minlength="8"><br><br>
+      <input type="submit">
+      <br>
+      <br>
+
+    </form>
+    
+    </body>
+
+    <body>
+
+      <h1>Select the Profile Picture</h1>
+      <p>
+          <input type="file" id="file" 
+                 onchange="Filevalidation()" />
+      </p>
+  
+      <p id="size"></p>
+  
+      <script>
+          Filevalidation = () => {
+              const fi = document.getElementById('file');
+              // Check if any file is selected.
+              if (fi.files.length > 0) {
+                  for (const i = 0; i <= fi.files.length - 1; i++) {
+  
+                      const fsize = fi.files.item(i).size;
+                      const file = Math.round((fsize / 1024));
+                      // The size of the file.
+                      if (file >= 4096) {
+                          alert(
+          "File too Big, please select a file less than 4mb");
+                      } else if (file < 2048) {
+                          alert(
+          "File too small, please select a file greater than 2mb");
+                      } else {
+                          document.getElementById('size').innerHTML = 
+                            '<b>'+ file + '</b> KB';
+                      }
+                  }
+              }
+          }
+      </script>
+  </body>
+  
+
+<body>
+  <div class="form-group">
+    <label for="profession">Profession:</label>
+    <select id="profession" name="profession" onchange="handleProfessionChange()">
+      <option value="">Select</option>
+      <option value="Student">Student</option>
+      <option value="Developer">Developer</option>
+      <option value="Entrepreneur">Entrepreneur</option>
+    </select>
+  </div>
+  
+  <div class="form-group" id="company-group" style="display: none;">
+    <label for="companyName">Company Name:</label>
+    <input type="text" id="companyName" name="companyName" required />
+    <small id="companyError" class="error-msg"></small>
+  </div>
+  <style>
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input, select {
+    padding: 8px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 5px;
+  }
+  
+  .error-msg {
+    color: red;
+    font-size: 12px;
+  }
+</style>  
+<script>
+  function handleProfessionChange() {
+  const profession = document.getElementById('profession').value;
+  const companyGroup = document.getElementById('company-group');
+  const companyInput = document.getElementById('companyName');
+
+  if (profession === 'Entrepreneur') {
+    companyGroup.style.display = 'block';
+    companyInput.setAttribute('required', true);
+  } else {
+    companyGroup.style.display = 'none';
+    companyInput.removeAttribute('required');
+    companyInput.value = '';
+    document.getElementById('companyError').textContent = '';
+  }
+}
+
+
+</script>
+</body>
+<body>
+  <input type="submit" value="Submit"></body>
+
+  <body >
+    <div class="form-group"><br><br>
+      <label for="country">Country:</label>
+      <select id="country" onchange="loadStates()" required>
+        <option value="">Select Country</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="state">State:</label>
+      <select id="state" onchange="loadCities()" required>
+        <option value="">Select State</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="city">City:</label>
+      <select id="city" required>
+        <option value="">Select City</option>
+      </select>
+    </div>
+    
+  </body>
+
+  <style>
+    .form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+select {
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+}
+
+
+  </style>
+  <script>
+// Mock data simulating API responses
+const countries = [
+  { id: 'c1', name: 'India' },
+  { id: 'c2', name: 'USA' }
+];
+
+const states = {
+  c1: [
+    { id: 's1', name: 'Maharashtra' },
+    { id: 's2', name: 'Karnataka' }
+  ],
+  c2: [
+    { id: 's3', name: 'California' },
+    { id: 's4', name: 'Texas' }
+  ]
+};
+
+const cities = {
+  s1: ['Mumbai', 'Pune'],
+  s2: ['Bangalore', 'Mysore'],
+  s3: ['Los Angeles', 'San Francisco'],
+  s4: ['Houston', 'Dallas']
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  const countrySelect = document.getElementById('country');
+  countries.forEach(c => {
+    const option = document.createElement('option');
+    option.value = c.id;
+    option.textContent = c.name;
+    countrySelect.appendChild(option);
+  });
+});
+
+function loadStates() {
+  const countryId = document.getElementById('country').value;
+  const stateSelect = document.getElementById('state');
+  const citySelect = document.getElementById('city');
+
+  stateSelect.innerHTML = `<option value="">Select State</option>`;
+  citySelect.innerHTML = `<option value="">Select City</option>`;
+
+  if (states[countryId]) {
+    states[countryId].forEach(s => {
+      const option = document.createElement('option');
+      option.value = s.id;
+      option.textContent = s.name;
+      stateSelect.appendChild(option);
+    });
+  }
+}
+
+function loadCities() {
+  const stateId = document.getElementById('state').value;
+  const citySelect = document.getElementById('city');
+  citySelect.innerHTML = `<option value="">Select City</option>`;
+
+  if (cities[stateId]) {
+    cities[stateId].forEach(city => {
+      const option = document.createElement('option');
+      option.value = city;
+      option.textContent = city;
+      citySelect.appendChild(option);
+    });
+  }
+}
+
+  </script>
+
+  
+
+
+
+
+    <body>
+      
+
+
+    </body>
+
+    <h1><p>Subscription Plan :</p></h1>
+
+<form action="/action_page.php">
+  
+  <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">Basic</label>
+  <input type="radio" id="css" name="fav_language" value="CSS">
+  <label for="css">Pro</label>
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <label for="javascript">Enterprise</label>
+
+  <br>  
+
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> Newsletter </label><br>
+
+
+</html>
